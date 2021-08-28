@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🚝", "✈️", "🚤", "🛰", "🚘", "🛳", "🚡", "🚞", "🚎", "🛴", "🚲", "🚁", "🛸", "🚀"]
+    @State var emojis = ["🚝", "✈️", "🚤", "🛰", "🚘", "🛳", "🚡", "🚞", "🚎", "🚲", "🚁", "🛸"]
     @State var emojiCount = 12
 
     var body: some View {
         VStack {
+            Text("Memorize!").font(.largeTitle)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(emojis[0..<emojiCount], id: \.self)  { emoji in
@@ -21,12 +22,14 @@ struct ContentView: View {
                     }
                 }
             }
-            .foregroundColor(.red)
+            .foregroundColor(.purple)
             Spacer()
-            HStack {
-                remove
+            HStack(alignment: .bottom) {
+                vehicles
                 Spacer()
-                add
+                animals
+                Spacer()
+                plants
             }
             .font(.largeTitle)
             .padding(.horizontal)
@@ -34,23 +37,44 @@ struct ContentView: View {
         .padding(.horizontal)
     }
     
-    var remove: some View {
+    var vehicles: some View {
         Button {
-            if emojiCount > 1 {
-                emojiCount -= 1
-            }
+            emojis = ["🚝", "✈️", "🚤", "🛰", "🚘", "🛳", "🚡", "🚞", "🚎", "🚲", "🚁", "🛸"].shuffled()
+            emojiCount = Int.random(in: 4...emojis.count)
         } label: {
-            Image(systemName: "minus.circle")
+            VStack {
+                Image(systemName: "car")
+                Text("Vehicles")
+                    .font(.caption)
+            }
         }
+        .padding(.horizontal)
     }
-    var add: some View {
+    var animals: some View {
         Button {
-            if emojiCount < emojis.count {
-                emojiCount += 1
-            }
+            emojis = ["🐶", "🐰", "🦊", "🐼", "🐸", "🐦", "🐌", "🐙", "🦆", "🦕", "🐠", "🐒", "🐮", "🐪", "🐋", "🐉"].shuffled()
+            emojiCount = Int.random(in: 4...emojis.count)
         } label: {
-            Image(systemName: "plus.circle")
+            VStack {
+                Image(systemName: "ladybug")
+                Text("Animals")
+                    .font(.caption)
+            }
         }
+        .padding(.horizontal)
+    }
+    var plants: some View {
+        Button {
+            emojis = ["🌴", "🌲", "☘️", "💐", "🌾", "🌻", "🌳", "🌵"].shuffled()
+            emojiCount = Int.random(in: 4...emojis.count)
+        } label: {
+            VStack {
+                Image(systemName: "leaf")
+                Text("Plants")
+                    .font(.caption)
+            }
+        }
+        .padding(.horizontal)
     }
 }
 

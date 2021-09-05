@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841A2EF426E2E65C002EFD22 /* MemoryTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A2EF326E2E65C002EFD22 /* MemoryTheme.swift */; };
 		841DF17726DAD86A00A03718 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841DF17626DAD86A00A03718 /* MemoryGame.swift */; };
 		841DF17926DADD9F00A03718 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841DF17826DADD9F00A03718 /* EmojiMemoryGame.swift */; };
 		847B663A26B78F3600207D3A /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B663926B78F3600207D3A /* MemorizeApp.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841A2EF326E2E65C002EFD22 /* MemoryTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTheme.swift; sourceTree = "<group>"; };
 		841DF17626DAD86A00A03718 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		841DF17826DADD9F00A03718 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		847B663626B78F3600207D3A /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				841DF17626DAD86A00A03718 /* MemoryGame.swift */,
+				841A2EF326E2E65C002EFD22 /* MemoryTheme.swift */,
 				841DF17826DADD9F00A03718 /* EmojiMemoryGame.swift */,
 				847B663926B78F3600207D3A /* MemorizeApp.swift */,
 				847B663B26B78F3600207D3A /* ContentView.swift */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841A2EF426E2E65C002EFD22 /* MemoryTheme.swift in Sources */,
 				841DF17726DAD86A00A03718 /* MemoryGame.swift in Sources */,
 				847B663C26B78F3600207D3A /* ContentView.swift in Sources */,
 				847B663A26B78F3600207D3A /* MemorizeApp.swift in Sources */,

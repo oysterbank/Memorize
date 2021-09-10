@@ -6,13 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     
     private(set) var score: Int
     
-    private var indexOfTheOnlyFaceUpCard: Int?
+    private var indexOfTheOnlyFaceUpCard: Int? {
+        get { cards.indices.filter({ cards[$0].isFaceUp }).only }
+        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
+    }
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id}),
@@ -36,20 +40,17 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                         cards[chosenIndex].seen = true
                     }
                 }
-                indexOfTheOnlyFaceUpCard = nil
+                cards[chosenIndex].isFaceUp = true
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
                 indexOfTheOnlyFaceUpCard = chosenIndex
             }
-            cards[chosenIndex].isFaceUp.toggle()
+//            cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         score = 0
-        cards = Array<Card>()
+        cards = []
         // Add numberOfPairsOfCards * 2 to cards array
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
@@ -60,10 +61,20 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     struct Card: Identifiable {
-        var isFaceUp: Bool = false
-        var seen: Bool = false
-        var isMatched: Bool = false
-        var content: CardContent
-        var id: Int
+        var isFaceUp = false
+        var seen = false
+        var isMatched = false
+        let content: CardContent
+        let id: Int
+    }
+}
+
+extension Array {
+    var only: Element? {
+        if count == 1 {
+            return first
+        } else {
+            return nil
+        }
     }
 }

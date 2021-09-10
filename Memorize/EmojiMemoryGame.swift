@@ -8,8 +8,10 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    static func chooseTheme() -> MemoryTheme {
-        let themes: Array<MemoryTheme> = [
+    typealias Card = MemoryGame<String>.Card
+    
+    private static func chooseTheme() -> MemoryTheme {
+        let themes = [
             MemoryTheme(name: "Vehicles", emojis: ["🚝", "✈️", "🚤", "🛵", "🚘", "🛳", "🚡", "🚞", "🚎", "🚲", "🚁", "🛸"].shuffled(), numberOfPairs: 8, color: "blue"),
             MemoryTheme(name: "Plants", emojis: ["🌵", "🍀", "🌾", "🌲", "🌹", "🌻", "🌴", "🪵", "🌳", "🌱", "🎋", "🍂"].shuffled(), numberOfPairs: 8, color: "green"),
             MemoryTheme(name: "Animals", emojis: ["🦦", "🐉", "🦉", "🦕", "🦑", "🐠", "🐋", "🐢", "🐘", "🐈", "🐿", "🐓", "🐶", "🐫"].shuffled(), numberOfPairs: 10, color: "yellow"),
@@ -17,11 +19,11 @@ class EmojiMemoryGame: ObservableObject {
             MemoryTheme(name: "Flags", emojis: ["🇺🇸", "🇬🇧", "🇰🇷", "🇹🇷", "🇯🇵", "🇮🇱", "🇨🇳", "🇦🇴", "🏳️‍🌈", "🇬🇷", "🇬🇩", "🇲🇽", "🇮🇹", "🇫🇷"].shuffled(), numberOfPairs: 10, color: "red"),
             MemoryTheme(name: "Food", emojis: ["🥨", "🧀", "🍗", "🍟", "🍕", "🌮", "🥖", "🌽", "🥪", "🫐", "🥟", "🥗"].shuffled(), numberOfPairs: 8, color: "orange")
         ]
-        let theme: MemoryTheme = themes.randomElement() ?? themes[0]
+        let theme = themes.randomElement() ?? themes[0]
         return theme
     }
     
-    static func createMemoryGame(theme: MemoryTheme) -> MemoryGame<String> {
+    private static func createMemoryGame(theme: MemoryTheme) -> MemoryGame<String> {
         return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairs) { pairIndex in
             theme.emojis[pairIndex]
         }
@@ -36,7 +38,7 @@ class EmojiMemoryGame: ObservableObject {
         self.model = EmojiMemoryGame.createMemoryGame(theme: chosenTheme)
     }
     
-    var cards: Array<MemoryGame<String>.Card> {
+    var cards: Array<Card> {
         model.cards
     }
     
@@ -71,7 +73,7 @@ class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Intent(s)
     
-    func choose(_ card: MemoryGame<String>.Card) {
+    func choose(_ card: Card) {
         model.choose(card)
     }
     

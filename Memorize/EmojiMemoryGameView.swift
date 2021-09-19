@@ -17,14 +17,8 @@ struct EmojiMemoryGameView: View {
                 .padding(.top)
                 .foregroundColor(game.color)
             Spacer()
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 64))]) {
-                ForEach(game.cards)  { card in
-                    CardView(card: card)
-                        .aspectRatio(2/3, contentMode: .fit)
-                        .onTapGesture {
-                            game.choose(card)
-                        }
-                }
+            AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+                cardView(for: card)
             }
             .foregroundColor(game.color)
             .padding(.horizontal)
@@ -39,6 +33,19 @@ struct EmojiMemoryGameView: View {
             .padding([.top, .leading, .trailing])
         }
         
+    }
+    
+    @ViewBuilder
+    private func cardView(for card: EmojiMemoryGame.Card) -> some View {
+        if card.isMatched && !card.isFaceUp {
+            Rectangle().opacity(0)
+        } else {
+            CardView(card: card)
+                .padding(4)
+                .onTapGesture {
+                    game.choose(card)
+                }
+        }
     }
 }
 
@@ -66,9 +73,9 @@ struct CardView: View {
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 20
+        static let cornerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.75
     }
 }
 

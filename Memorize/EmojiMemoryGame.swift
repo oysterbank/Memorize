@@ -12,12 +12,12 @@ class EmojiMemoryGame: ObservableObject {
     
     private static func chooseTheme() -> MemoryTheme {
         let themes = [
-            MemoryTheme(name: "Vehicles", emojis: ["🚝", "✈️", "🚤", "🛵", "🚘", "🛳", "🚡", "🚞", "🚎", "🚲", "🚁", "🛸"].shuffled(), numberOfPairs: 8, color: "blue"),
+            MemoryTheme(name: "Vehicles", emojis: ["🚝", "✈️", "🚤", "🛵", "🚘", "🛳", "🚡", "🚞", "🚎", "🚲", "🚁", "🛸"].shuffled(), numberOfPairs: 10, color: "blue"),
             MemoryTheme(name: "Plants", emojis: ["🌵", "🍀", "🌾", "🌲", "🌹", "🌻", "🌴", "🪵", "🌳", "🌱", "🎋", "🍂"].shuffled(), numberOfPairs: 8, color: "green"),
-            MemoryTheme(name: "Animals", emojis: ["🦦", "🐉", "🦉", "🦕", "🦑", "🐠", "🐋", "🐢", "🐘", "🐈", "🐿", "🐓", "🐶", "🐫"].shuffled(), numberOfPairs: 10, color: "yellow"),
+            MemoryTheme(name: "Animals", emojis: ["🦦", "🐉", "🦉", "🦕", "🦑", "🐠", "🐋", "🐢", "🐘", "🐈", "🐿", "🐓", "🐶", "🐫"].shuffled(), numberOfPairs: 14, color: "yellow"),
             MemoryTheme(name: "Space", emojis: ["🪐", "🌖", "🌞", "🌍", "🛰", "🚀"].shuffled(), numberOfPairs: 6, color: "purple"),
-            MemoryTheme(name: "Flags", emojis: ["🇺🇸", "🇬🇧", "🇰🇷", "🇹🇷", "🇯🇵", "🇮🇱", "🇨🇳", "🇦🇴", "🏳️‍🌈", "🇬🇷", "🇬🇩", "🇲🇽", "🇮🇹", "🇫🇷"].shuffled(), numberOfPairs: 10, color: "red"),
-            MemoryTheme(name: "Food", emojis: ["🥨", "🧀", "🍗", "🍟", "🍕", "🌮", "🥖", "🌽", "🥪", "🫐", "🥟", "🥗"].shuffled(), numberOfPairs: 8, color: "orange")
+            MemoryTheme(name: "Flags", emojis: ["🇺🇸", "🇬🇧", "🇰🇷", "🇹🇷", "🇯🇵", "🇮🇱", "🇨🇳", "🇦🇴", "🏳️‍🌈", "🇬🇷", "🇬🇩", "🇲🇽", "🇮🇹", "🇫🇷"].shuffled(), numberOfPairs: 12, color: "red"),
+            MemoryTheme(name: "Food", emojis: ["🥨", "🧀", "🍗", "🍟", "🍕", "🌮", "🥖", "🌽", "🥪", "🫐", "🥟", "🥗"].shuffled(), numberOfPairs: 10, color: "orange")
         ]
         let theme = themes.randomElement() ?? themes[0]
         return theme

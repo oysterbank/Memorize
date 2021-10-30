@@ -28,6 +28,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                     score += 2
+                    if cards[potentialMatchIndex].hasEarnedBonus {
+                        score += 1
+                    }
                 } else {
                     if cards[potentialMatchIndex].seen {
                         score -= 1
@@ -44,7 +47,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             } else {
                 indexOfTheOnlyFaceUpCard = chosenIndex
             }
-//            cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
